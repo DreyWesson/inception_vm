@@ -11,5 +11,5 @@ RUN 	apk update && \
 
 EXPOSE 6379
 
-CMD [ "redis-server", "/etc/redis.conf" ]
+CMD ["redis-server", "--protected-mode", "no"]
 

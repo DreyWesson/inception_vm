@@ -21,7 +21,7 @@ RUN mkdir -p /etc/vsftpd && touch /etc/vsftpd/vsftpd.conf
 RUN chown -R ${FTP_USR}:${FTP_USR} /var/www
 RUN chmod -R u+w /var/www
 
-# RUN chmod -R 777 /var/www
+RUN chmod -R 777 /var/www
 
 
 
@@ -29,7 +29,6 @@ RUN chmod -R u+w /var/www
 COPY ./requirements/bonus/vsftpd/vsftpd.conf /etc/vsftpd/vsftpd.conf
 
 WORKDIR /var/www
-# USER ${FTP_USR}
 EXPOSE 21 20
 
 CMD ["/usr/sbin/vsftpd", "/etc/vsftpd/vsftpd.conf"]

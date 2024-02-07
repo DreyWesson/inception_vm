@@ -112,13 +112,14 @@ services:
     restart: always
 
   portainer:
-    image: portainer/portainer-ce:2.11.1
     container_name: portainer
     ports:
+      - "8000:8000"
       - "9443:9443"
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
       - portainer_data:/data
+    image: portainer/portainer-ce:2.11.1
     restart: always
 
 
@@ -137,11 +138,10 @@ volumes:
       device: /home/${USER}/data/mariadb
 
   portainer_data:
-      driver_opts:
+    driver_opts:
       o: bind
       type: none
       device: /home/${USER}/data/portainer
-
 networks:
     inception:
         driver: bridge
